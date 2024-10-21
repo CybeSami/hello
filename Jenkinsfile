@@ -8,12 +8,19 @@ pipeline {
                 }
             }
         }
-        
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('Setup') {
             steps {
                 script {
-                    // Installez les dépendances
-                    sh 'pip3 install -r requirements.txt'
+                    // Créer un environnement virtuel
+                    sh 'python3 -m venv venv'
+                    // Activer l'environnement virtuel et installer les dépendances
+                    sh 'source venv/bin/activate && pip install -r requirements.txt'
                 }
             }
         }
