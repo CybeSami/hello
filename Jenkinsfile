@@ -1,15 +1,10 @@
 pipeline {
     agent any
-
-    environment {
-        GITHUB_CREDENTIALS = credentials('github-credentials') // ID de vos credentials
-    }
-    
     stages {
         stage('Clone') {
             steps {
                 script {
-                    git credentialsId: 'github-credentials', url: "https://${GITHUB_CREDENTIALS.username}:${GITHUB_CREDENTIALS.password}@github.com/CybeSami/hello.git"
+                    git credentialsId: 'github-credentials', url: 'https://github.com/CybeSami/hello.git'
                 }
             }
         }
