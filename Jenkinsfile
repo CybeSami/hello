@@ -4,7 +4,7 @@ pipeline {
         stage('Clone') {
             steps {
                 script {
-                    git url: 'https://github.com/CybeSami/hello.git'
+                    git branch: 'main', url: 'https://github.com/CybeSami/hello.git'
                 }
             }
         }
