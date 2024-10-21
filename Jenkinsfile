@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'source venv/bin/activate && python3 helloworld.py'
+                    sh './venv/bin/python3 helloworld.py'
                 }
             }
         }
