@@ -13,9 +13,9 @@ pipeline {
             steps {
                 script {
                     // Installez pip si ce n'est pas déjà fait
-                    sh 'apt-get update && apt-get install -y python3-pip git'
+                    sh 'sudo apt-get update && apt-get install -y python3-pip git'
                     // Installez les dépendances
-                    sh 'pip3 install -r requirements.txt'
+                    sh 'sudo pip3 install -r requirements.txt'
                 }
             }
         }
