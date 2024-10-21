@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         GITHUB_CREDENTIALS = credentials('github-credentials') // ID de vos credentials
     }
@@ -9,7 +9,6 @@ pipeline {
         stage('Clone') {
             steps {
                 script {
-                    // Utilisez le token dans l'URL
                     git credentialsId: 'github-credentials', url: "https://${GITHUB_CREDENTIALS.username}:${GITHUB_CREDENTIALS.password}@github.com/CybeSami/hello.git"
                 }
             }
@@ -18,7 +17,10 @@ pipeline {
         stage('Setup') {
             steps {
                 script {
-                    sh 'pip install -r requirements.txt' // Installe les dépendances Python
+                    // Installez pip si ce n'est pas déjà fait
+                    sh 'apt-get update && apt-get install -y python3-pip git'
+                    // Installez les dépendances
+                    sh 'pip3 install -r requirements.txt'
                 }
             }
         }
@@ -26,14 +28,14 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'python hello_world.py' // Exécute le script Python
+                    sh 'python3 helloworld.py'
                 }
             }
         }
         
         stage('Test') {
             steps {
-                echo 'Aucun test pour le moment' // Affiche un message dans les logs
+                echo 'Aucun test pour le moment'
             }
         }
     }
