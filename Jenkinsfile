@@ -12,8 +12,6 @@ pipeline {
         stage('Setup') {
             steps {
                 script {
-                    // Installez pip si ce n'est pas déjà fait
-                    sh 'apt-get install -y python3-pip git'
                     // Installez les dépendances
                     sh 'pip3 install -r requirements.txt'
                 }
