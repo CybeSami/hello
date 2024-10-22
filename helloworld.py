@@ -2,7 +2,7 @@ import time
 from tqdm import tqdm  
 
 def hello_animation():
-    message = "Hello, World!"
+    message = "+++++++++++"
     for char in tqdm(message, desc="Affichage du message"):
         print(char, end='', flush=True)
         time.sleep(0.1)
